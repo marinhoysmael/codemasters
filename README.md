@@ -19,3 +19,24 @@
 - Sprint 1: CRUD de livros e alunos.
 - Sprint 2: Empréstimos e devoluções.
 - Sprint 3: Autenticação e relatórios.
+------------------------------------------------------------------------
+**Entidades:**
+
+-   **Livro**
+    -   `id` (PK, UUID ou auto numérico)\
+    -   `titulo` (obrigatório, texto até 200 caracteres)\
+    -   `autor` (obrigatório, texto até 150 caracteres)\
+    -   `isbn` (único, regex: `\d{10}|\d{13}`)\
+    -   `quantidade` (inteiro ≥ 0)
+-   **Aluno**
+    -   `id` (PK)\
+    -   `nome` (obrigatório, até 150 caracteres)\
+    -   `email` (único, regex de e-mail válido)\
+    -   `matricula` (único, até 20 caracteres, obrigatório)
+-   **Emprestimo**
+    -   `id` (PK)\
+    -   `aluno_id` (FK → Aluno)\
+    -   `livro_id` (FK → Livro)\
+    -   `data_emprestimo` (obrigatório)\
+    -   `data_devolucao` (pode ser nulo até devolução)\
+    -   **Regra:** Não permitir empréstimo se `quantidade = 0`.
